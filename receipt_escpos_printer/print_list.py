@@ -13,22 +13,26 @@ headers = {
 }
 
 try:
-    response = requests.get(f"{ha_url}/api/shopping_list", headers=headers)
+    # Fetch state of the todo.shopping_list entity
+    response = requests.get(f"{ha_url}/api/states/todo.shopping_list", headers=headers)
     response.raise_for_status()
-    items = response.json()
+    data = response.json()
+
+    # Extract items
+    items = data["attributes"].get("items", [])
 
     p = printer.Network(printer_ip, port=printer_port)
     p.set(align="left", font="a")
-    content = "Home Assistant Shopping List:\n"
+    content = "🛒 Home Assistant To-Do List:\\n"
     for entry in items:
-        if not entry.get("complete", False):
-            content += f"[ ] {entry['name']}\n"
-    content += "\n"
+        if not entry.get("completed", False):
+            content += f"[ ] {entry['summary']}\\n"
+    content += "\\n"
 
     p.text(content)
     p.cut()
     p.close()
 
-    print("✅ Printed shopping list.")
+    print("✅ Printed from todo.shopping_list.")
 except Exception as e:
-    print(f"❌ Error: {e}")
+    print(f"❌ Error printing: {e}")
