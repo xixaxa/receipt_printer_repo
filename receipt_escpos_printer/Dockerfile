@@ -12,7 +12,7 @@ RUN apk add --no-cache \
     py3-setuptools
 
 COPY requirements.txt /requirements.txt
-RUN pip3 install --no-cache-dir -r /requirements.txt
+RUN pip3 install --break-system-packages --no-cache-dir -r /requirements.txt
 
 COPY run.sh /
 COPY print_list.py /
