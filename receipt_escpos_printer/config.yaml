@@ -1,0 +1,16 @@
+name: "ESC/POS Receipt Printer"
+slug: "receipt_escpos_printer"
+version: "1.0.0"
+description: "Local add-on to print shopping lists with a network ESC/POS printer"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+startup: application
+boot: auto
+options:
+  printer_ip: "192.168.1.79"
+  printer_port: 9100
+schema:
+  printer_ip: str
+  printer_port: int
