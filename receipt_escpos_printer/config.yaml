@@ -1,6 +1,6 @@
 name: "ESC/POS Receipt Printer"
 slug: "receipt_escpos_printer"
-version: "1.0.2"
+version: "1.0.3"
 <<<<<<< HEAD
 description: "Print shopping lists to an ESC/POS printer"
 =======
