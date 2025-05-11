@@ -14,3 +14,5 @@ options:
 schema:
   printer_ip: str
   printer_port: int
+build_from:
+  amd64: "ghcr.io/home-assistant/amd64-base:latest"
