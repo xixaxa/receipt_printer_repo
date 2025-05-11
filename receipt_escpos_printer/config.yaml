@@ -12,8 +12,11 @@ boot: manual
 options:
   printer_ip: "192.168.1.79"
   printer_port: 9100
+  ha_url: "http://homeassistant:8123"
+  ha_token: "your_long_lived_token"
 schema:
   printer_ip: str
   printer_port: int
-build_from:
-  amd64: "ghcr.io/home-assistant/amd64-base:latest"
+  ha_url: str
+  ha_token: str
+image: null
