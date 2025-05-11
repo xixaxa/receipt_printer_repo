@@ -1,14 +1,21 @@
-import json
 import os
+import requests
 from escpos import printer
 
-printer_ip = os.getenv("PRINTER_IP", "192.168.1.79")
-printer_port = int(os.getenv("PRINTER_PORT", "9100"))
-shopping_list_path = "/config/.shopping_list.json"
+printer_ip = os.getenv("PRINTER_IP")
+printer_port = int(os.getenv("PRINTER_PORT"))
+ha_url = os.getenv("HA_URL").rstrip("/")
+ha_token = os.getenv("HA_TOKEN")
+
+headers = {
+    "Authorization": f"Bearer {ha_token}",
+    "Content-Type": "application/json",
+}
 
 try:
-    with open(shopping_list_path, "r") as f:
-        items = json.load(f)
+    response = requests.get(f"{ha_url}/api/shopping_list", headers=headers)
+    response.raise_for_status()
+    items = response.json()
 
     p = printer.Network(printer_ip, port=printer_port)
     p.set(align="left", font="a")
@@ -24,4 +31,4 @@ try:
 
     print("✅ Printed shopping list.")
 except Exception as e:
-    print(f"❌ Error printing: {e}")
+    print(f"❌ Error: {e}")
