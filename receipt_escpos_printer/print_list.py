@@ -34,5 +34,6 @@ try:
     p.close()
 
     print("✅ Printed from todo.shopping_list.")
+    print(content)
 except Exception as e:
     print(f"❌ Error printing: {e}")
