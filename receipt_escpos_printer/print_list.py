@@ -23,7 +23,7 @@ try:
 
     p = printer.Network(printer_ip, port=printer_port)
     p.set(align="left", font="a")
-    content = "🛒 Home Assistant To-Do List:\\n"
+    content = "Home Assistant To-Do List:\\n"
     for entry in items:
         if not entry.get("completed", False):
             content += f"[ ] {entry['summary']}\\n"
