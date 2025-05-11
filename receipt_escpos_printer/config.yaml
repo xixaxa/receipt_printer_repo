@@ -1,6 +1,6 @@
 name: "ESC/POS Receipt Printer"
 slug: "receipt_escpos_printer"
-version: "1.0.6"
+version: "1.0.7"
 description: "Home Assistant add-on to print shopping lists via ESC/POS network printer"
 arch:
   - amd64
@@ -19,4 +19,4 @@ schema:
   printer_port: int
   ha_url: str
   ha_token: str
-image: null
+build: "true"
