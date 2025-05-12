@@ -21,7 +21,7 @@ try:
     # Extract items
     items = data["attributes"].get("items", [])
 
-    p = printer.Network(printer_ip, port=printer_port)
+    p = printer.Network(host=printer_ip, port=printer_port)
     p.set(align="left", font="a")
     content = "Home Assistant To-Do List:\\n"
     for entry in items:
